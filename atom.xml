@@ -6,7 +6,7 @@
   <link href="https://sono.zeabur.app/atom.xml" rel="self"/>
   
   <link href="https://sono.zeabur.app/"/>
-  <updated>2024-09-04T16:10:55.098Z</updated>
+  <updated>2024-09-05T13:57:43.145Z</updated>
   <id>https://sono.zeabur.app/</id>
   
   <author>
@@ -17,11 +17,11 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
-    <title></title>
+    <title>快速排序</title>
     <link href="https://sono.zeabur.app/2024/09/05/%E5%BF%AB%E9%80%9F%E6%8E%92%E5%BA%8F%E6%A8%A1%E6%9D%BF/"/>
     <id>https://sono.zeabur.app/2024/09/05/%E5%BF%AB%E9%80%9F%E6%8E%92%E5%BA%8F%E6%A8%A1%E6%9D%BF/</id>
     <published>2024-09-04T16:10:55.098Z</published>
-    <updated>2024-09-04T16:10:55.098Z</updated>
+    <updated>2024-09-05T13:57:43.145Z</updated>
     
     <content type="html"><![CDATA[<h1 id="快速排序模板"><a href="#快速排序模板" class="headerlink" title="快速排序模板"></a>快速排序模板</h1><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.io.*;</span><br><span class="line"><span class="keyword">import</span> java.util.Scanner;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 注意类名必须为 Main, 不要有任何 package xxx 信息</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Main</span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> IOException &#123;</span><br><span class="line">        <span class="type">Scanner</span> <span class="variable">sc</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Scanner</span>(System.in);</span><br><span class="line">        <span class="type">int</span> <span class="variable">n</span> <span class="operator">=</span> sc.nextInt();</span><br><span class="line">        <span class="type">int</span>[] q = <span class="keyword">new</span> <span class="title class_">int</span>[n];</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; n; i++) &#123;</span><br><span class="line">            q[i] = sc.nextInt();</span><br><span class="line">        &#125;</span><br><span class="line">        quick_sort(q, <span class="number">0</span>, n - <span class="number">1</span>);</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; n; i++) &#123;</span><br><span class="line">            System.out.print(q[i] + <span class="string">&quot; &quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">quick_sort</span><span class="params">(<span class="type">int</span> q[], <span class="type">int</span> l, <span class="type">int</span> r)</span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(l &gt;= r) <span class="keyword">return</span>;</span><br><span class="line">        <span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> l - <span class="number">1</span>, j = r + <span class="number">1</span>, x = q[(l + r) / <span class="number">2</span>];</span><br><span class="line">        <span class="keyword">while</span> (i &lt; j)&#123;</span><br><span class="line">            <span class="keyword">do</span> i++; <span class="keyword">while</span> (q[i] &lt; x);</span><br><span class="line">            <span class="keyword">do</span> j--; <span class="keyword">while</span> (q[j] &gt; x);</span><br><span class="line">            <span class="keyword">if</span>(i &lt; j) sort(q, i, j);</span><br><span class="line">        &#125;</span><br><span class="line">        quick_sort(q, l, j);</span><br><span class="line">        quick_sort(q, j + <span class="number">1</span>, r);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">sort</span><span class="params">(<span class="type">int</span> q[], <span class="type">int</span> i, <span class="type">int</span> j)</span>&#123;</span><br><span class="line">        <span class="type">int</span> <span class="variable">t</span> <span class="operator">=</span> q[i];</span><br><span class="line">        q[i] = q[j];</span><br><span class="line">        q[j] = t;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>]]></content>
     
@@ -33,6 +33,10 @@
     
     
     
+    <category term="算法" scheme="https://sono.zeabur.app/categories/%E7%AE%97%E6%B3%95/"/>
+    
+    
+    <category term="快速排序" scheme="https://sono.zeabur.app/tags/%E5%BF%AB%E9%80%9F%E6%8E%92%E5%BA%8F/"/>
     
   </entry>
   
